@@ -12,6 +12,7 @@ namespace Kuhpik
     public class Bootstrap : Singleton<Bootstrap>
     {
         [SerializeField] GameConfig config;
+        [SerializeField] UIConfig uiConfig;
 
         [field: SerializeField] public SaveData PlayerData { get; private set; }
         [field: SerializeField] public GameData GameData { get; private set; }
@@ -36,6 +37,7 @@ namespace Kuhpik
         void Start()
         {
             itemsToInject.Add(config);
+            itemsToInject.Add(uiConfig);
             itemsToInject.Add(new GameData());
 
             systems = FindObjectsOfType<GameSystem>().ToDictionary(x => x.GetType(), x => x);
@@ -64,6 +66,22 @@ namespace Kuhpik
         void FixedUpdate()
         {
             currentState.FixedUpdate();
+        }
+        
+        private void OnDestroy()
+        {
+            SaveGame();
+            if (GameData.World != null)
+            {
+                GameData.World.Destroy();
+                GameData.World = null;
+            }
+
+            if (GameData.EventWorld != null)
+            {
+                GameData.EventWorld.Destroy();
+                GameData.EventWorld = null;
+            }
         }
 
         public void GameRestart(int sceneIndex)

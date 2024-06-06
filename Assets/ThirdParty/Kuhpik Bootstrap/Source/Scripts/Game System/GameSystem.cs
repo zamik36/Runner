@@ -1,12 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using Leopotam.EcsLite;
+using Source.Scripts.EcsUtil;
+using UnityEngine;
 
 namespace Kuhpik
 {
     public abstract class GameSystem : MonoBehaviour, IGameSystem
     {
         protected SaveData save;
-        protected GameConfig config;
         protected GameData game;
+        protected GameConfig config;
+
+        protected EcsWorld world => game.World;
+        protected EcsWorld eventWorld => game.EventWorld;
+        protected Pools pool => game.Pools;
 
         public virtual void OnCustomTick() { }
 
@@ -25,5 +32,19 @@ namespace Kuhpik
         public virtual void OnStateExit() { }
 
         public virtual void OnUpdate() { }
+        
+                
+#if UNITY_EDITOR
+       
+        private void OnValidate()
+        {
+            var n = (GetType().ToString());
+            var split = n.Split('.').ToList();
+            n = split[split.Count-1];
+            n = System.Text.RegularExpressions.Regex.Replace(n, "[A-Z]", " $0");
+            gameObject.name = n;
+            transform.position = Vector3.zero;
+        }
+#endif
     }
 }

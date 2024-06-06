@@ -4,6 +4,8 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using Leopotam.EcsLite;
+using Source.Scripts.EcsUtil;
 
 namespace Kuhpik
 {
@@ -13,10 +15,10 @@ namespace Kuhpik
     [Serializable]
     public class GameData
     {
-        // Example (I use public fields for data, but u free to use properties\methods etc)
-        // public float LevelProgress;
-        // public Enemy[] Enemies;
-        public SerializedDictionary<int, Color> Dict = new SerializedDictionary<int, Color>();
-        public int test;
+        public EcsWorld World;
+        public EcsWorld EventWorld;
+        public Fabric Fabric;
+        public Pools Pools;
+        public int PlayerEntity;
     }
 }

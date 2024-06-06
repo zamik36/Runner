@@ -83,6 +83,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: de15fdf285a833641b4716d20f2deae6, type: 2}
+  uiConfig: {fileID: 11400000, guid: ca3b37c8f2b12ec489d7d897e40ae53a, type: 2}
+  <PlayerData>k__BackingField:
+    SoundOn: 1
+  <GameData>k__BackingField:
+    PlayerEntity: 0
 --- !u!1 &1917835718499638880
 GameObject:
   m_ObjectHideFlags: 0

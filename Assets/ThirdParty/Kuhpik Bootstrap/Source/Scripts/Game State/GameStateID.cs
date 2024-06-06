@@ -11,7 +11,8 @@
         Pause = 3,
         Result = 10,
         Shop = 20,
-        Settings = 30
+        Settings = 30,
+        Shared = 100
 
         // Extend just like that
         //

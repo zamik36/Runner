@@ -17,10 +17,16 @@ namespace Kuhpik
         [SerializeField] [BoxGroup("Elements")] [ShowIf("showElementsOnHide")] GameObject[] elementsToShowOnHide;
 
         HashSet<GameStateID> statesMap;
+        protected UIConfig config;
 
         void Awake()
         {
             statesMap = new HashSet<GameStateID>(statesToOpenWith);
+        }
+
+        public void Init(UIConfig config)
+        {
+            this.config = config;
         }
 
         public virtual void Open()
