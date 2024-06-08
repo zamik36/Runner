@@ -7,38 +7,41 @@ namespace Source.Scripts.UI
 {
     public class SettingsUIScreen : UIScreen
     {
-        [SerializeField] private GameObject settingsBG;
+        [SerializeField] private GameObject settingsMobileBG;
+        [SerializeField] private GameObject settingsPCBG;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button hapticButton;
+        [SerializeField] private Button soundMobileButton;
+        [SerializeField] private Button soundPCButton;
 
-        public event Action OnSettingsButtonClick;
-        public event Action OnHapticButtonClick;
+        private Button currentSoundButton;
+        private GameObject currentSettingsBG;
 
-        public override void Subscribe()
+        public void Init(bool isMobile,Action settingsToggle, Action hapticToggle,Action soundToggle)
         {
-            settingsButton.onClick.AddListener(SendSettingsButtonClickEvent);
-            hapticButton.onClick.AddListener(SendHapticButtonClickEvent);
-        }
-
-        private void SendSettingsButtonClickEvent()
-        {
-            OnSettingsButtonClick?.Invoke();
-        }
-
-        private void SendHapticButtonClickEvent()
-        {
-            OnHapticButtonClick?.Invoke();
+            currentSoundButton = isMobile ? soundMobileButton : soundPCButton;
+            currentSettingsBG = isMobile ? settingsMobileBG : settingsPCBG;
+            
+            settingsButton.onClick.AddListener(settingsToggle.Invoke);
+            hapticButton.onClick.AddListener(hapticToggle.Invoke);
+            currentSoundButton.onClick.AddListener(soundToggle.Invoke);
         }
 
         public void ToggleSettings()
         {
-            settingsBG.SetActive(!settingsBG.activeSelf);
+            currentSettingsBG.SetActive(!currentSettingsBG.activeSelf);
         }
 
         public void ToggleHaptic(bool isEnabled)
         {
             var sprite = isEnabled ? config.HapticOn : config.HapticOff;
             hapticButton.image.sprite = sprite;
+        }
+
+        public void ToggleSound(bool isEnabled)
+        {
+            var sprite = isEnabled ? config.SoundOn : config.SoundOff;
+            currentSoundButton.image.sprite = sprite;
         }
     }
 }

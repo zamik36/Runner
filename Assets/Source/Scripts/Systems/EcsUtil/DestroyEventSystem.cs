@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Kuhpik;
 using Leopotam.EcsLite;
+using Source.Scripts.Components.Events;
 
 namespace Source.Scripts.Systems.EcsUtil
 {
@@ -14,6 +15,7 @@ namespace Source.Scripts.Systems.EcsUtil
             
             filtersPools = new ();
             //AddFilter<DamageEvent>();
+            AddFilter<SoundEvent>();
           
         }
 

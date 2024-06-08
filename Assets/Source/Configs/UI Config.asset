@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HapticOn: {fileID: 21300000, guid: 7d1c7793b347c1f44bfc9517c59c7884, type: 3}
   HapticOff: {fileID: 21300000, guid: a28f6a734883c3d48852de3bcf67521c, type: 3}
+  SoundOn: {fileID: 21300000, guid: aea14199dd52fe44c818309307fa2ca4, type: 3}
+  SoundOff: {fileID: 21300000, guid: 8b17f03ae59eff5458448048ab7902cf, type: 3}

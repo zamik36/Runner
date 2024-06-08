@@ -11,5 +11,7 @@ namespace Kuhpik
         // public float MoveSpeed => moveSpeed;
         public Sprite HapticOn;
         public Sprite HapticOff;
+        public Sprite SoundOn;
+        public Sprite SoundOff;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using Source.Scripts.Components.Events;
 using Source.Scripts.Components.Life;
 using Source.Scripts.Components.Move;
 using Source.Scripts.Components.View;
@@ -16,10 +17,10 @@ namespace Source.Scripts.EcsUtil
         //public readonly EcsPool<Hp> Hp;
         public readonly EcsPool<AnimComponent> Anim;
         public readonly EcsPool<DeadTag> DeadTag;
-        
+
         //event world components
-        //
-        
+        public readonly EcsPool<SoundEvent> SoundEvent;
+
         public Pools(EcsWorld world, EcsWorld eventWorld)
         {
             //world components
@@ -31,9 +32,11 @@ namespace Source.Scripts.EcsUtil
             //Hp = world.GetPool<Hp>();
             Anim = world.GetPool<AnimComponent>();
             DeadTag = world.GetPool<DeadTag>();
-            
+
             //event world components
-            
+            SoundEvent = eventWorld.GetPool<SoundEvent>();
+
+
         }
     }
 }
