@@ -20,5 +20,8 @@ namespace Kuhpik
         public Fabric Fabric;
         public Pools Pools;
         public int PlayerEntity;
+
+        public bool WantToAskReviewNow;
+        public bool HasAskedReviewInSession;
     }
 }

@@ -1,4 +1,6 @@
-﻿using NaughtyAttributes;
+﻿using System.Collections;
+using NaughtyAttributes;
+using Source.Scripts.SDK;
 using UnityEngine;
 
 namespace Kuhpik
@@ -17,9 +19,26 @@ namespace Kuhpik
         {
             data = HandlePlayerData();
 
+#if UNITY_EDITOR
             Bootstrap.Instance.itemsToInject.Add(data);
+            Bootstrap.Instance.IsPlayerDataLoaded = true;
+#else
+            if (!YandexManager.Instance.IsAuthCS)
+            {
+                Bootstrap.Instance.itemsToInject.Add(data);
+                Bootstrap.Instance.IsPlayerDataLoaded = true;
+            }
+#endif
             Bootstrap.Instance.EventSave += Save;
         }
+
+        public void SetDataFromSDK(SaveData saveData)
+        {
+            data = saveData;
+            Bootstrap.Instance.itemsToInject.Add(data);
+            Bootstrap.Instance.IsPlayerDataLoaded = true;
+        }
+
 
         SaveData HandlePlayerData()
         {
@@ -32,12 +51,41 @@ namespace Kuhpik
 
         void Save()
         {
+#if UNITY_EDITOR
             SaveExtension.Save(data, saveKey);
+#else     
+            if (YandexManager.Instance.IsAuthCS)
+            {
+                YandexManager.Save(data, saveKey);
+                Debug.Log("save to cloud");
+            }
+            else
+            {
+                SaveExtension.Save(data, saveKey);
+                Debug.Log("save to client");
+            }
+                
+#endif
         }
 
         SaveData Load()
         {
+#if UNITY_EDITOR
             return SaveExtension.Load(saveKey, new SaveData());
+#else
+            if (YandexManager.Instance.IsAuthCS)
+            {
+                Debug.Log("load from cloud");
+                YandexManager.StartLoadFromSDK();
+                return new SaveData();
+            }
+            else
+            {
+                Debug.Log("load from client");
+                return SaveExtension.Load(saveKey, new SaveData());
+            }
+
+#endif
         }
     }
 }

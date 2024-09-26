@@ -16,6 +16,8 @@ namespace Source.Scripts.Systems.EcsUtil
             filtersPools = new ();
             //AddFilter<DamageEvent>();
             AddFilter<SoundEvent>();
+            AddFilter<SDKEvent>();
+            AddFilter<SaveEvent>();
           
         }
 

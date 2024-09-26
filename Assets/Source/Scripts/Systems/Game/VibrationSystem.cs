@@ -15,13 +15,13 @@ namespace Source.Scripts.Systems.Game
             base.OnUpdate();
         }
         
-        private void Vibrate()
+      /*  private void Vibrate()
         {
             if (!save.VibroOn)
                 return;
 
             MMVibrationManager.Vibrate();
           
-        }
+        }*/
     }
 }

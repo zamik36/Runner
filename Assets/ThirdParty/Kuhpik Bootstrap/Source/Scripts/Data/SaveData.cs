@@ -3,6 +3,8 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Source.Scripts.Data;
+using Source.Scripts.YaSDK;
 
 namespace Kuhpik
 {
@@ -15,8 +17,13 @@ namespace Kuhpik
         // Example (I use public fields for data, but u free to use properties\methods etc)
         // [BoxGroup("level")] public int level;
         // [BoxGroup("currency")] public int money;
-
+        public PlayerSDKData PlayerSDKData=new PlayerSDKData();
+        
+        public bool MusicOn = true;
         public bool SoundOn = true;
-        public bool VibroOn = true;
+        public LangType LangType;
+
+        public TutorStepType CurrentTutorStepType;
+        //public bool VibroOn = true;
     }
 }

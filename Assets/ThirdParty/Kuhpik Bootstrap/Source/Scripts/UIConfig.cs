@@ -1,5 +1,7 @@
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using NaughtyAttributes;
+using Source.Scripts.YaSDK;
 
 namespace Kuhpik
 {
@@ -9,9 +11,13 @@ namespace Kuhpik
         // Example
         // [SerializeField] [BoxGroup("Moving")] private float moveSpeed;
         // public float MoveSpeed => moveSpeed;
-        public Sprite HapticOn;
-        public Sprite HapticOff;
+        public Sprite EngFlag;
+        public Sprite RuFlag;
         public Sprite SoundOn;
         public Sprite SoundOff;
+        public Sprite MusicOn;
+        public Sprite MusicOff;
+        
+        public SerializedDictionary<LangType,SerializedDictionary<UITextType, string>> UiNames;
     }
 }

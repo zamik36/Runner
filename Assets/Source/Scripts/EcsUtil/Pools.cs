@@ -8,6 +8,7 @@ namespace Source.Scripts.EcsUtil
 {
     public class Pools
     {
+        private EcsWorld eventWorld;
         //world components
         public readonly EcsPool<BaseViewComponent> View;
         public readonly EcsPool<Direction> Dir;
@@ -20,9 +21,12 @@ namespace Source.Scripts.EcsUtil
 
         //event world components
         public readonly EcsPool<SoundEvent> SoundEvent;
+        public readonly EcsPool<SaveEvent> SaveEvent;
+        public readonly EcsPool<SDKEvent> SDKEvent;
 
         public Pools(EcsWorld world, EcsWorld eventWorld)
         {
+            this.eventWorld = eventWorld;
             //world components
             View = world.GetPool<BaseViewComponent>();
             Dir = world.GetPool<Direction>();
@@ -35,8 +39,13 @@ namespace Source.Scripts.EcsUtil
 
             //event world components
             SoundEvent = eventWorld.GetPool<SoundEvent>();
-
-
+            SaveEvent = eventWorld.GetPool<SaveEvent>();
+            SDKEvent = eventWorld.GetPool<SDKEvent>();
+        }
+        
+        public void Save()
+        {
+            SaveEvent.Add(eventWorld.NewEntity());
         }
     }
 }
