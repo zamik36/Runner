@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Leopotam.EcsLite;
 using Source.Scripts.EcsUtil;
+using Source.Scripts.Helpers;
 
 namespace Kuhpik
 {
@@ -23,5 +24,7 @@ namespace Kuhpik
 
         public bool WantToAskReviewNow;
         public bool HasAskedReviewInSession;
+
+        public CameraSwitcher CameraSwitcher;
     }
 }
