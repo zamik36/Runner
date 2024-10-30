@@ -7,5 +7,7 @@ namespace Kuhpik
     public sealed class AudioConfig : ScriptableObject
     {
         public AudioClip Money;
+        public AudioClip ClickSound;
+        public AudioClip BuySound;
     }
 }

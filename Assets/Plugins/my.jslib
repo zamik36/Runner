@@ -140,8 +140,15 @@ var functions = {
     },
 
      ShowInterExtern : function(){
-    
         showInter();
+    },
+
+     StartGetOtherGamesURL: function(){
+       ysdk.features.GamesAPI.getAllGames().then(({games, developerURL}) => {
+                myGameI.SendMessage('YandexManager','SetOtherGamesUrl',developerURL);
+          }).catch(err => {
+             console.log('error getting other games'+err)
+          })
     },
 
     

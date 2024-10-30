@@ -1,4 +1,5 @@
 ﻿using Kuhpik;
+using Source.Scripts.SDK;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,8 @@ namespace Source.Scripts.UI
             base.Subscribe();
             otherGamesBtn.onClick.AddListener(()=>
             {
-               /* string currentDomain = Application.absoluteURL.Split('/')[2];
-                Application.OpenURL($"https://{currentDomain}/games/developer/92072");*/
+                string currentDomain = YandexManager.Instance.OtherGamesURL;
+                Application.OpenURL(currentDomain);
             });
         }
     }

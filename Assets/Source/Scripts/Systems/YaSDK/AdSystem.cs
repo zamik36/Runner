@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Source.Scripts.Systems.Game
 {
-    public class AdsSystem : GameSystem/*WithScreen<RewardedADUIScreen>*/
+    public class AdSystem : GameSystem/*WithScreen<RewardedADUIScreen>*/
     {
         [SerializeField] private float rewardCd=30;
         [SerializeField] private float interCd=60;

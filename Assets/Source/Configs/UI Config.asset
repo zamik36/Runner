@@ -18,6 +18,10 @@ MonoBehaviour:
   SoundOff: {fileID: 21300000, guid: 6beb49b6bf4d72e4bae161d333943257, type: 3}
   MusicOn: {fileID: 21300000, guid: 232de978be916a24da1a8c1446729123, type: 3}
   MusicOff: {fileID: 21300000, guid: 8614ef3dcae213f4e99b99edf07ef33c, type: 3}
+  MoneyActive: {fileID: 21300000, guid: c72ee78fa6f823248adf6ffb348e44ff, type: 3}
+  MoneyNotActive: {fileID: 21300000, guid: a95934e94f51205489621a97b635a42e, type: 3}
+  ButtonBuyActive: {fileID: 21300000, guid: a58ffbc8a72439e409d84e8fdbc8228d, type: 3}
+  ButtonBuyNotActive: {fileID: 21300000, guid: dfa9ef34e276b124f89d0faf994ad5fa, type: 3}
   UiNames:
     _serializedList:
     - Key: 1

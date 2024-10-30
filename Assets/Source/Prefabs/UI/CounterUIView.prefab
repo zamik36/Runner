@@ -48,7 +48,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4920538882825331116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -161,16 +161,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 77
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 587cc15ab6648e849b4491e5bfbccee6, type: 2}
-  m_sharedMaterial: {fileID: 4769927295128000726, guid: 587cc15ab6648e849b4491e5bfbccee6,
+  m_fontAsset: {fileID: 11400000, guid: 487295214824fca46abbf1eaa799db5d, type: 2}
+  m_sharedMaterial: {fileID: -651350215187672406, guid: 487295214824fca46abbf1eaa799db5d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Translatable Text
       objectReference: {fileID: 0}
+    - target: {fileID: 8025006382831885360, guid: f66c86ac80a0c734f83afe2eddaa0f97,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 103.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8429412797170183025, guid: f66c86ac80a0c734f83afe2eddaa0f97,
         type: 3}
       propertyPath: m_Pivot.x

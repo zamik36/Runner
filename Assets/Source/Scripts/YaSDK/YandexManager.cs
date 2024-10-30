@@ -35,6 +35,9 @@ namespace Source.Scripts.SDK
         private static extern string GetLang();
 
         [DllImport("__Internal")]
+        private static extern string StartGetOtherGamesURL();
+
+        [DllImport("__Internal")]
         private static extern void SaveExtern(string data);
 
         [DllImport("__Internal")]
@@ -52,6 +55,7 @@ namespace Source.Scripts.SDK
         public bool IsMobileCS;
         public bool IsAuthCS;
         public bool IsSDKLoaded;
+        public string OtherGamesURL;
 
         public event Action AuthSuccessEvent;
         public event Action AuthFailEvent;
@@ -91,6 +95,16 @@ namespace Source.Scripts.SDK
             catch (EntryPointNotFoundException e)
             {
                 Debug.LogWarning("IsAuth failed. Make sure you are running a WebGL build in a browser:" +
+                                 e.Message);
+            }
+            
+            try
+            {
+                StartGetOtherGamesURL();
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                Debug.LogWarning("StartGetOtherGamesURL failed. Make sure you are running a WebGL build in a browser:" +
                                  e.Message);
             }
 
@@ -249,6 +263,12 @@ namespace Source.Scripts.SDK
         }
 
         #endregion
+
+        //called from html
+        public void SetOtherGamesUrl(string url)
+        {
+            OtherGamesURL = url;
+        }
 
         public LangType GetLangSDK()
         {
