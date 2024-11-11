@@ -26,5 +26,6 @@ namespace Kuhpik
         public bool HasAskedReviewInSession;
 
         public CameraSwitcher CameraSwitcher;
+        public AnimManager AnimManager;
     }
 }
