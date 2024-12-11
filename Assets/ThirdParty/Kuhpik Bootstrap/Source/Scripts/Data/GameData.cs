@@ -16,15 +16,18 @@ namespace Kuhpik
     [Serializable]
     public class GameData
     {
+        //leo ecs
         public EcsWorld World;
         public EcsWorld EventWorld;
         public Fabric Fabric;
         public Pools Pools;
         public int PlayerEntity;
 
+        //sdk data
         public bool WantToAskReviewNow;
         public bool HasAskedReviewInSession;
 
+        //managers
         public CameraSwitcher CameraSwitcher;
         public AnimManager AnimManager;
     }

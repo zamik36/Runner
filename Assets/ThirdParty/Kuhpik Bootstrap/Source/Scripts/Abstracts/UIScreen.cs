@@ -1,5 +1,6 @@
 ﻿using NaughtyAttributes;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Kuhpik
@@ -18,15 +19,12 @@ namespace Kuhpik
 
         HashSet<GameStateID> statesMap;
         protected UIConfig config;
-
-        void Awake()
-        {
-            statesMap = new HashSet<GameStateID>(statesToOpenWith);
-        }
+        
 
         public void Init(UIConfig config)
         {
             this.config = config;
+            statesMap = new HashSet<GameStateID>(statesToOpenWith);
         }
 
         public virtual void Open()
@@ -63,5 +61,17 @@ namespace Kuhpik
                 Open();
             }
         }
+        
+#if UNITY_EDITOR
+       
+        private void OnValidate()
+        {
+            var n = (GetType().ToString());
+            var split = n.Split('.').ToList();
+            n = split[split.Count-1];
+            n = System.Text.RegularExpressions.Regex.Replace(n, "[A-Z]", " $0");
+            gameObject.name = n;
+        }
+#endif
     }
 }

@@ -10,6 +10,7 @@ namespace Kuhpik
         protected SaveData save;
         protected GameData game;
         protected GameConfig config;
+        protected UIConfig uiConfig;
         protected AudioConfig audioConfig;
 
         protected EcsWorld world => game.World;

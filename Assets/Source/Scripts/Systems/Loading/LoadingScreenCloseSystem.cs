@@ -13,7 +13,7 @@ namespace Source.Scripts.Systems.Loading
         public override void OnInit()
         {
             base.OnInit();
-            screen = FindObjectOfType<LoadingUIScreen>();
+            screen = FindObjectOfType<LoadingUIScreen>(true);
             StartCoroutine(WaitFrame());
         }
 

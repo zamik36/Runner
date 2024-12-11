@@ -13,6 +13,7 @@ namespace Kuhpik
     [DefaultExecutionOrder(500)]
     public class Bootstrap : Singleton<Bootstrap>
     {
+        [SerializeField] private UIManager uiManager;
         [SerializeField] GameConfig config;
         [SerializeField] UIConfig uiConfig;
         [SerializeField] AudioConfig audioConfig;
@@ -54,6 +55,8 @@ namespace Kuhpik
             itemsToInject.Add(new GameData());
             systems = FindObjectsOfType<GameSystem>().ToDictionary(x => x.GetType(), x => x);
             ProcessInstallers();
+            uiManager.Init(uiConfig);
+            
             yield return new WaitUntil(() => IsPlayerDataLoaded);
             enabled = true;
 

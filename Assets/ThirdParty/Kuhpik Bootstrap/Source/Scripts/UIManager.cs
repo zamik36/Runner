@@ -10,14 +10,15 @@ namespace Kuhpik
         static Dictionary<Type, UIScreen> uiScreensByType;
         static UIScreen[] uiScreens;
 
-        void Start()
+        public void Init(UIConfig uiConfig)
         {
-            uiScreens = FindObjectsOfType<UIScreen>(true);
+            uiScreens = GetComponentsInChildren<UIScreen>(true);
             uiScreensByType = uiScreens.Where(x => x.GetType() != typeof(UIScreen)).ToDictionary(x => x.GetType(), x => x);
 
             foreach (var screen in uiScreensByType.Values)
             {
                 Bootstrap.Instance.itemsToInject.Add(screen);
+                screen.Init(uiConfig);
                 screen.Subscribe();
             }
 
