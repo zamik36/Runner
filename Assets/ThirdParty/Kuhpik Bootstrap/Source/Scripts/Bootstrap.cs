@@ -17,6 +17,7 @@ namespace Kuhpik
         [SerializeField] GameConfig config;
         [SerializeField] UIConfig uiConfig;
         [SerializeField] AudioConfig audioConfig;
+        [SerializeField] SDKConfig sdkConfig;
 
         [field: SerializeField] public SaveData PlayerData { get; private set; }
         [field: SerializeField] public GameData GameData { get; private set; }
@@ -52,6 +53,7 @@ namespace Kuhpik
             itemsToInject.Add(config);
             itemsToInject.Add(uiConfig);
             itemsToInject.Add(audioConfig);
+            itemsToInject.Add(sdkConfig);
             itemsToInject.Add(new GameData());
             systems = FindObjectsOfType<GameSystem>().ToDictionary(x => x.GetType(), x => x);
             ProcessInstallers();

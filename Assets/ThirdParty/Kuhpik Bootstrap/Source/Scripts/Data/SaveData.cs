@@ -1,6 +1,4 @@
 ﻿using System;
-using UnityEngine;
-using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using Source.Scripts.Data;
@@ -14,16 +12,17 @@ namespace Kuhpik
     [Serializable]
     public class SaveData
     {
-        // Example (I use public fields for data, but u free to use properties\methods etc)
-        // [BoxGroup("level")] public int level;
-        // [BoxGroup("currency")] public int money;
+        //sdk
         public PlayerSDKData PlayerSDKData=new PlayerSDKData();
         
+        //settings
         public bool MusicOn = true;
         public bool SoundOn = true;
         public LangType LangType;
-
+        
+        //tutor
         public TutorStepType CurrentTutorStepType;
-        //public bool VibroOn = true;
+       
+        //data
     }
 }

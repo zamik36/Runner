@@ -13,8 +13,6 @@ namespace Source.Scripts.Systems.YaSDK
 {
      public class RateUsSystem : GameSystemWithScreen<RateUsUIScreen>
     {
-        [SerializeField] private float delay=180;
-
         private AuthUIScreen authUIScreen;
         private EcsFilter filter;
 
@@ -33,7 +31,7 @@ namespace Source.Scripts.Systems.YaSDK
             screen.CloseButton.onClick.AddListener(OnNoThanks);
 
             if (!save.PlayerSDKData.HasRated)
-                StartCoroutine(CoroutineManager.WaitThenPerform(delay, EnableReviewAsk));
+                StartCoroutine(CoroutineManager.WaitThenPerform(sdkConfig.RateUsDelay, EnableReviewAsk));
         }
 
         //used once

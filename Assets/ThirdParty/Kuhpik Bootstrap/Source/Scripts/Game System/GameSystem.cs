@@ -12,6 +12,7 @@ namespace Kuhpik
         protected GameConfig config;
         protected UIConfig uiConfig;
         protected AudioConfig audioConfig;
+        protected SDKConfig sdkConfig;
 
         protected EcsWorld world => game.World;
         protected EcsWorld eventWorld => game.EventWorld;

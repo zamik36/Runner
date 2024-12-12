@@ -82,15 +82,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed42646e02d8df448f1be3c5f30844f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   config: {fileID: 11400000, guid: de15fdf285a833641b4716d20f2deae6, type: 2}
   uiConfig: {fileID: 11400000, guid: ca3b37c8f2b12ec489d7d897e40ae53a, type: 2}
   audioConfig: {fileID: 11400000, guid: dcba88126b75e0c4685387ac67c6bc2e, type: 2}
+  sdkConfig: {fileID: 11400000, guid: 78bb21eab00f1724097b31514913852e, type: 2}
   <PlayerData>k__BackingField:
     MusicOn: 1
     SoundOn: 1
     LangType: 0
+    CurrentTutorStepType: 0
   <GameData>k__BackingField:
     PlayerEntity: 0
+    WantToAskReviewNow: 0
+    HasAskedReviewInSession: 0
+    CameraSwitcher: {fileID: 0}
   IsPlayerDataLoaded: 0
 --- !u!1 &1917835718499638880
 GameObject:

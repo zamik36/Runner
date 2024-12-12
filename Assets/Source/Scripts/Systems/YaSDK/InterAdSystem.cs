@@ -10,14 +10,11 @@ using UnityEngine;
 
 namespace Source.Scripts.Systems.Game
 {
-    public class AdSystem : GameSystem/*WithScreen<RewardedADUIScreen>*/
+    public class InterAdSystem : GameSystem
     {
-        [SerializeField] private float rewardCd=30;
-        [SerializeField] private float interCd=60;
-        
         private EcsFilter filter;
         private InterAdUIScreen interAdUIScreen;
-        private Coroutine coroutineReward;
+      
         private Coroutine coroutineInter;
         private bool interTimerReady;
         
@@ -26,13 +23,9 @@ namespace Source.Scripts.Systems.Game
             base.OnInit();
             filter = eventWorld.Filter<SDKEvent>().End();
             interAdUIScreen = FindObjectOfType<InterAdUIScreen>(true);
-            //screen.AdButton.onClick.AddListener(OnShowReward);
             
             YandexManager.Instance.InterClosedEvent += OnInterClosed;
-            
-            //screen.Toggle(false);
-            coroutineReward = StartCoroutine(RewardCd());
-            
+
             coroutineInter = StartCoroutine(InterCd());
         }
 
@@ -45,44 +38,39 @@ namespace Source.Scripts.Systems.Game
                     && interTimerReady                                     //timer ready
                     && (!game.WantToAskReviewNow))  //there will not be rate us screen
                 {
-                    //StartCoroutine(StartPreInterPause(2f)); //2f is required by sdk!
-                    StartCoroutine(CoroutineManager.WaitThenPerform(0.1f, YandexManager.Instance.ShowInter));
+                    ShowInter();
                 }
             }
         }
 
-        private IEnumerator StartPreInterPause(float delay)
+        private void ShowInter()
+        {
+            if (sdkConfig.AnimateInterCountdown)
+                StartCoroutine(CountdownAnimation());
+            else
+                YandexManager.Instance.ShowInter();
+        }
+
+        private IEnumerator CountdownAnimation()
         {
             interAdUIScreen.Open();
-            interAdUIScreen.AnimateCountDots(delay);
-            yield return new WaitForSeconds(delay);
+            interAdUIScreen.AnimateCountDots(2f); //2f is required by sdk!
+            yield return new WaitForSeconds(2f);
+            interAdUIScreen.Close();
             YandexManager.Instance.ShowInter();
         }
 
         private void OnInterClosed()
         {
             coroutineInter = StartCoroutine(InterCd());
-            //interAdUIScreen.Close();
         }
 
         private IEnumerator InterCd()
         {
             interTimerReady = false;
-            yield return new WaitForSeconds(interCd);
+            yield return new WaitForSeconds(sdkConfig.InterCD);
             interTimerReady = true;
         }
-
-        private void OnShowReward()
-        {
-            //screen.Toggle(false);
-            YandexManager.Instance.ShowRewardedAd();
-            coroutineReward = StartCoroutine(RewardCd());
-        }
-
-        private IEnumerator RewardCd()
-        {
-            yield return new WaitForSeconds(rewardCd);
-            //screen.Toggle(true);
-        }
+        
     }
 }
