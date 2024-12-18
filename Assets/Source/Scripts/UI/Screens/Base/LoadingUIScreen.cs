@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Kuhpik;
+using UnityEngine;
 
 namespace Source.Scripts.UI
 {
-    public class LoadingUIScreen : MonoBehaviour
+    public class LoadingUIScreen : UIScreen
     {
         
     }

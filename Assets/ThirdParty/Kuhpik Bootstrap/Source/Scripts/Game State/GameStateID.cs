@@ -6,13 +6,14 @@
         // Otherwise all of your settings in inspector can be messed up.
 
         Loading = 0,
-        Menu = 1,
+        TapToStart = 1,
         Game = 2,
-        Pause = 3,
-        Result = 10,
+        Victory = 3,
+        Lose = 10,
         Shop = 20,
         Settings = 30,
         Shared = 100
+        
 
         // Extend just like that
         //
